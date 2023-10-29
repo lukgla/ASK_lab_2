@@ -1,0 +1,7 @@
+networks:
+  ethernets:
+    enp0s3:
+      dhcp: false
+      addresses: [10.0.0.1/24]
+      gateway4: 10.0.0.1
+  version: 2
