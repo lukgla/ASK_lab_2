@@ -52,9 +52,9 @@ iptables -A FORWARD -i enp0s3 -s 0/0 -d 10.0.0.0/24 -j ACCEPT
 iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -j MASQUERADE
 
 
-extern=(ip -4 addr show enp0s3 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+extern=$(ip -4 addr show enp0s3 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 # port forwarding
-iptables -A PREROUTING -t nat -i enp0s3 -p tcp -d $extern --dport 1234 -j DNAT --to-destination 10.0.0.2:22
+iptables -A PREROUTING -t nat -i enp0s3 -p tcp -d ${extern} --dport 1234 -j DNAT --to-destination 10.0.0.2:22
 
 iptables -A PREROUTING -t nat -i enp0s8 -p tcp -d 10.0.0.1 --dport 1234 -j DNAT --to-destination 10.0.0.2:22
 

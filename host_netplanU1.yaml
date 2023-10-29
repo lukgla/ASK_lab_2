@@ -1,7 +1,7 @@
-networks:
+network:
   ethernets:
     enp0s3:
-      dhcp: true
+      dhcp4: true
     enp0s8:
       addresses: [10.0.0.1/24]
   version: 2
